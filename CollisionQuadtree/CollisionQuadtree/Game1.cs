@@ -18,11 +18,16 @@ namespace CollisionQuadtree
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Player player;
+        public const int SCREEN_WIDTH = 1080, SCREEN_HEIGHT = 720;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = SCREEN_HEIGHT;
         }
 
         /// <summary>
@@ -34,6 +39,7 @@ namespace CollisionQuadtree
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            player = new Player(Content);
 
             base.Initialize();
         }
@@ -67,10 +73,11 @@ namespace CollisionQuadtree
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
             // TODO: Add your update logic here
+            player.Update(); 
 
             base.Update(gameTime);
         }
@@ -81,9 +88,12 @@ namespace CollisionQuadtree
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
