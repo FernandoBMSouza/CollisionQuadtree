@@ -11,15 +11,20 @@ namespace CollisionQuadtree
     {
         protected Game _game;
         protected Texture2D _texture, _redTexture;
-        protected Vector2 _position, _speed;
+        protected Vector2 _position;
         protected Point _size;
-        protected bool _isColliding;
+        protected bool _isColliding, _isCollidingWithPlayer;
+        protected float _speed;
 
-        public bool IsColliding { get { return _isColliding; } set { _isColliding = value;  } }
+        public bool IsColliding { get { return _isColliding; } set { _isColliding = value; } }
+        public bool IsCollidingWithPlayer { get { return _isCollidingWithPlayer; } set { _isCollidingWithPlayer = value; } }
 
         public virtual void Move(GameTime gameTime)
         { 
         }
+
+        public virtual void Collision(BaseElement element)
+        { }
 
         public virtual void Collision(BaseElement[] elements)
         {
@@ -43,8 +48,7 @@ namespace CollisionQuadtree
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = _isColliding ? _redTexture : _texture;
-            spriteBatch.Draw(texture, new Rectangle((int)_position.X, (int)_position.Y, _size.X, _size.Y), Color.White);
+            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, _size.X, _size.Y), Color.White);
         }
 
         public Rectangle Bounds

@@ -25,5 +25,11 @@ namespace CollisionQuadtree
             _size = new Point(width, height);
             _position = new Vector2(x, y);
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            Texture2D texture = _isCollidingWithPlayer ? _redTexture : _texture;
+            spriteBatch.Draw(texture, new Rectangle((int)_position.X, (int)_position.Y, _size.X, _size.Y), Color.White);
+        }
     }
 }

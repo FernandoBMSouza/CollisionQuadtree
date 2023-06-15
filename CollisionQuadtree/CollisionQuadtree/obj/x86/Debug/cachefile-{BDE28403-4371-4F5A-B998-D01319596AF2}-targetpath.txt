@@ -2,4 +2,3 @@ Content\green.xnb
 Content\red.xnb
 Content\blue.xnb
 Content\yellow.xnb
-Content\brown.xnb

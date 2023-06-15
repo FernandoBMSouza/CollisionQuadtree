@@ -96,13 +96,15 @@ namespace CollisionQuadtree
 
             // TODO: Add your update logic here
             player.Move(gameTime);
-
             player.Collision(dinamicElements);
             player.Collision(staticElements);
 
             foreach (DinamicElement de in dinamicElements)
             {
                 de.Move(gameTime);
+                de.Collision(player);
+                de.Collision(dinamicElements);
+                de.Collision(staticElements);
             }
 
             base.Update(gameTime);

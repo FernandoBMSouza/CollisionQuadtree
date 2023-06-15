@@ -37,15 +37,6 @@
       <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\yellow.xnb</Output>
       <Time>2023-06-15T17:25:19.4733225-03:00</Time>
     </Item>
-    <Item>
-      <Source>brown.png</Source>
-      <Name>brown</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\brown.xnb</Output>
-      <Time>2023-06-15T18:10:39.8216284-03:00</Time>
-    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
