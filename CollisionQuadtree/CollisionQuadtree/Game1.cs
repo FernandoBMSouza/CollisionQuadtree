@@ -18,8 +18,12 @@ namespace CollisionQuadtree
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Player player;
-        public const int SCREEN_WIDTH = 1080, SCREEN_HEIGHT = 720;
+        private const int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
+
+        BaseElement player;
+        BaseElement[] staticElements;
+        BaseElement[] dinamicElements;
+        Random random;
 
         public Game1()
         {
@@ -39,8 +43,9 @@ namespace CollisionQuadtree
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            player = new Player(Content);
-
+            random = new Random();
+            staticElements = new StaticElement[50];
+            dinamicElements = new DinamicElement[50];
             base.Initialize();
         }
 
@@ -54,6 +59,18 @@ namespace CollisionQuadtree
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            IsMouseVisible = true;
+            Texture2D playerTexture = Content.Load<Texture2D>("red");
+            Texture2D staticElementTexture = Content.Load<Texture2D>("green");
+            Texture2D dinamicElementTexture = Content.Load<Texture2D>("blue");
+
+            player = new Player(playerTexture, this);
+
+            for (int i = 0; i < staticElements.Length; i++)
+                staticElements[i] = new StaticElement(this, staticElementTexture, random);
+
+            for (int i = 0; i < dinamicElements.Length; i++)
+                dinamicElements[i] = new DinamicElement(this, dinamicElementTexture, random);
         }
 
         /// <summary>
@@ -77,7 +94,10 @@ namespace CollisionQuadtree
                 this.Exit();
 
             // TODO: Add your update logic here
-            player.Update(); 
+            player.Move(gameTime);
+
+            foreach (DinamicElement de in dinamicElements)
+                de.Move(gameTime);
 
             base.Update(gameTime);
         }
@@ -92,7 +112,15 @@ namespace CollisionQuadtree
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+
             player.Draw(spriteBatch);
+
+            foreach (StaticElement se in staticElements)
+                se.Draw(spriteBatch);
+
+            foreach (DinamicElement de in dinamicElements)
+                de.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

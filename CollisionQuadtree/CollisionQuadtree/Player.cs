@@ -10,51 +10,42 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CollisionQuadtree
 {
-    class Player
+    class Player : BaseElement
     {
-        private Texture2D Texture;
-        private Vector2 Position;
-        private Vector2 Size;
-        private float Speed;
-
-        public Player(ContentManager content)
+        public Player(Texture2D texture, Game game)
         {
-            Texture = content.Load<Texture2D>("red");
-            Size = new Vector2(20, 20);
-            Position = new Vector2(Game1.SCREEN_WIDTH/2, Game1.SCREEN_HEIGHT/2);
-            Speed = 5f;
+            _game = game;
+            _texture = texture;
+            _size = new Point(10, 10);
+            _position = new Vector2(_game.Window.ClientBounds.Width / 2, _game.Window.ClientBounds.Height / 2);
+            _speed = new Vector2(200, 200);
         }
 
-        public void Update()
+        public override void Move(GameTime gameTime)
         {
             //Cima (Seta Up ou W) + Checagem se está nos limites da cena
-            if ((Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.Up)) && Position.Y > 0)
+            if ((Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.Up)) && _position.Y > 0)
             {
-                Position.Y -= Speed;
+                _position.Y -= _speed.Y * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             }
 
             //Baixo (Seta Down ou S) + Checagem se está nos limites da cena
-            if ((Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down)) && Position.Y < Game1.SCREEN_HEIGHT - Size.Y)
+            if ((Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down)) && _position.Y < _game.Window.ClientBounds.Height - _size.Y)
             {
-                Position.Y += Speed;
+                _position.Y += _speed.Y * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             }
 
             //Esquerda (Seta Left ou A) + Checagem se está nos limites da cena
-            if ((Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.Left)) && Position.X > 0)
+            if ((Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.Left)) && _position.X > 0)
             {
-                Position.X -= Speed;
+                _position.X -= _speed.X * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             }
 
             //Direita (Seta Rigth ou D) + Checagem se está nos limites da cena
-            if ((Keyboard.GetState().IsKeyDown(Keys.D) || Keyboard.GetState().IsKeyDown(Keys.Right)) && Position.X < Game1.SCREEN_WIDTH - Size.X)
+            if ((Keyboard.GetState().IsKeyDown(Keys.D) || Keyboard.GetState().IsKeyDown(Keys.Right)) && _position.X < _game.Window.ClientBounds.Width - _size.X)
             {
-                Position.X += Speed;
+                _position.X += _speed.X * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(Texture, new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y), Color.White);
         }
     }
 }
