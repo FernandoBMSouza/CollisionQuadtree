@@ -15,10 +15,11 @@ namespace CollisionQuadtree
         private int _state;
         private Random _random;
 
-        public DinamicElement(Game game, Texture2D texture, Random random)
+        public DinamicElement(Game game, Texture2D texture, Texture2D redTexture, Random random)
         {
             _game = game;
             _texture = texture;
+            _redTexture = redTexture;
 
             _random = random;
 

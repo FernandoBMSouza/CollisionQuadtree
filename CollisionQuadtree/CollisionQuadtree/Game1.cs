@@ -60,17 +60,18 @@ namespace CollisionQuadtree
 
             // TODO: use this.Content to load your game content here
             IsMouseVisible = true;
-            Texture2D playerTexture = Content.Load<Texture2D>("red");
+            Texture2D playerTexture = Content.Load<Texture2D>("blue");
             Texture2D staticElementTexture = Content.Load<Texture2D>("green");
-            Texture2D dinamicElementTexture = Content.Load<Texture2D>("blue");
+            Texture2D dinamicElementTexture = Content.Load<Texture2D>("yellow");
+            Texture2D redTexture = Content.Load<Texture2D>("red");
 
             player = new Player(playerTexture, this);
 
             for (int i = 0; i < staticElements.Length; i++)
-                staticElements[i] = new StaticElement(this, staticElementTexture, random);
+                staticElements[i] = new StaticElement(this, staticElementTexture, redTexture, random);
 
             for (int i = 0; i < dinamicElements.Length; i++)
-                dinamicElements[i] = new DinamicElement(this, dinamicElementTexture, random);
+                dinamicElements[i] = new DinamicElement(this, dinamicElementTexture, redTexture, random);
         }
 
         /// <summary>
@@ -96,8 +97,13 @@ namespace CollisionQuadtree
             // TODO: Add your update logic here
             player.Move(gameTime);
 
+            player.Collision(dinamicElements);
+            player.Collision(staticElements);
+
             foreach (DinamicElement de in dinamicElements)
+            {
                 de.Move(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -108,7 +114,7 @@ namespace CollisionQuadtree
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();

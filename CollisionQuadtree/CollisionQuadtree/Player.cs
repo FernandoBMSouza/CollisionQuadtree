@@ -21,6 +21,11 @@ namespace CollisionQuadtree
             _speed = new Vector2(200, 200);
         }
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, _size.X, _size.Y), Color.White);
+        }
+
         public override void Move(GameTime gameTime)
         {
             //Cima (Seta Up ou W) + Checagem se está nos limites da cena

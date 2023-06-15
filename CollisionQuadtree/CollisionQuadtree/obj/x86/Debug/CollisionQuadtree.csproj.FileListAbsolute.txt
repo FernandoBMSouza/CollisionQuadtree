@@ -7,3 +7,5 @@ C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQ
 C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\green.xnb
 C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\red.xnb
 C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\blue.xnb
+C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\yellow.xnb
+C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\brown.xnb
