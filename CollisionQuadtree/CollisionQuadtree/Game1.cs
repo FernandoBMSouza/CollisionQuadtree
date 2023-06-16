@@ -21,9 +21,10 @@ namespace CollisionQuadtree
         private const int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
 
         BaseElement player;
-        BaseElement[] staticElements;
-        BaseElement[] dinamicElements;
+        List<BaseElement> elements;
         Random random;
+        Quadtree quadtree;
+        private float count, interval = 1f;
 
         public Game1()
         {
@@ -44,8 +45,8 @@ namespace CollisionQuadtree
         {
             // TODO: Add your initialization logic here
             random = new Random();
-            staticElements = new StaticElement[50];
-            dinamicElements = new DinamicElement[50];
+            elements = new List<BaseElement>();
+            quadtree = new Quadtree(0, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
             base.Initialize();
         }
 
@@ -66,12 +67,16 @@ namespace CollisionQuadtree
             Texture2D redTexture = Content.Load<Texture2D>("red");
 
             player = new Player(playerTexture, this);
+            quadtree.Insert(player);
 
-            for (int i = 0; i < staticElements.Length; i++)
-                staticElements[i] = new StaticElement(this, staticElementTexture, redTexture, random);
+            for (int i = 0; i < 50; i++)
+            {
+                elements.Add(new StaticElement(this, staticElementTexture, redTexture, random));
+                elements.Add(new DinamicElement(this, dinamicElementTexture, redTexture, random));
+            }
 
-            for (int i = 0; i < dinamicElements.Length; i++)
-                dinamicElements[i] = new DinamicElement(this, dinamicElementTexture, redTexture, random);
+            foreach (BaseElement element in elements)
+                quadtree.Insert(element);
         }
 
         /// <summary>
@@ -90,21 +95,38 @@ namespace CollisionQuadtree
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            count += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
             // TODO: Add your update logic here
             player.Move(gameTime);
-            player.Collision(dinamicElements);
-            player.Collision(staticElements);
 
-            foreach (DinamicElement de in dinamicElements)
+            Quadtree playerQuadrant = quadtree.GetQuadrant(player);
+            List<BaseElement> elementsInPlayerQuadrant = quadtree.GetElementsInQuadrant(playerQuadrant, player);
+            Window.Title = "Quantidade de Elementos na Regiao onde o Player esta: " + elementsInPlayerQuadrant.Count;
+
+            player.Collision(elementsInPlayerQuadrant);
+
+            foreach (BaseElement item in elements)
             {
-                de.Move(gameTime);
-                de.Collision(player);
-                de.Collision(dinamicElements);
-                de.Collision(staticElements);
+                if (item is DinamicElement)
+                    item.Move(gameTime);
+
+                Quadtree itemQuadrant = quadtree.GetQuadrant(item);
+                List<BaseElement> elementsInItemQuadrant = quadtree.GetElementsInQuadrant(itemQuadrant, item);
+                item.Collision(elementsInItemQuadrant);
+            }
+
+            // Reinicia a Quadtree por causa dos elementos que se movem
+            if (count > interval)
+            {
+                count = 0;
+                quadtree.Clear();
+                quadtree.Insert(player);
+                foreach (BaseElement element in elements)
+                    quadtree.Insert(element);
             }
 
             base.Update(gameTime);
@@ -123,11 +145,10 @@ namespace CollisionQuadtree
 
             player.Draw(spriteBatch);
 
-            foreach (StaticElement se in staticElements)
-                se.Draw(spriteBatch);
+            foreach (BaseElement item in elements)
+                item.Draw(spriteBatch);
 
-            foreach (DinamicElement de in dinamicElements)
-                de.Draw(spriteBatch);
+            //quadtree.Draw(spriteBatch);
 
             spriteBatch.End();
 

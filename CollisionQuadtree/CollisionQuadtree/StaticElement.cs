@@ -10,6 +10,8 @@ namespace CollisionQuadtree
 {
     class StaticElement : BaseElement
     {
+        private Texture2D _redTexture;
+
         public StaticElement(Game game, Texture2D texture, Texture2D redTexture, Random random)
         {
             _game = game;

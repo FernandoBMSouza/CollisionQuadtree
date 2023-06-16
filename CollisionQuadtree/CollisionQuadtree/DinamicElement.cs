@@ -15,6 +15,7 @@ namespace CollisionQuadtree
     {
         private Direction _direction;
         private Random _random;
+        private Texture2D _redTexture;
 
         public DinamicElement(Game game, Texture2D texture, Texture2D redTexture, Random random)
         {
@@ -65,9 +66,9 @@ namespace CollisionQuadtree
             }
         }
 
-        public override void Collision(BaseElement[] elements)
+        public override void Collision(List<BaseElement> elements)
         {
-            for (int i = 0; i < elements.Length; i++)
+            for (int i = 0; i < elements.Count; i++)
             {
                 if (elements[i] != this)
                 {

@@ -21,9 +21,9 @@ namespace CollisionQuadtree
             _speed = 200f;
         }
 
-        public override void Collision(BaseElement[] elements)
+        public override void Collision(List<BaseElement> elements)
         {
-            for (int i = 0; i < elements.Length; i++)
+            for (int i = 0; i < elements.Count; i++)
             {
                 if (elements[i] != this)
                 {

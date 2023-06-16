@@ -2,22 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>green.png</Source>
-      <Name>green</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\green.xnb</Output>
-      <Time>2023-06-15T18:11:48.7787941-03:00</Time>
-    </Item>
-    <Item>
       <Source>red.png</Source>
       <Name>red</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\red.xnb</Output>
-      <Time>2023-06-14T18:38:05.4382663-03:00</Time>
+      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\red.xnb</Output>
+      <Time>2023-06-16T18:25:36.1268761-03:00</Time>
     </Item>
     <Item>
       <Source>blue.png</Source>
@@ -25,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\blue.xnb</Output>
-      <Time>2023-06-14T18:55:50.3020275-03:00</Time>
+      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\blue.xnb</Output>
+      <Time>2023-06-16T18:25:36.0644075-03:00</Time>
     </Item>
     <Item>
       <Source>yellow.png</Source>
@@ -34,8 +25,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\yellow.xnb</Output>
-      <Time>2023-06-15T17:25:19.4733225-03:00</Time>
+      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\yellow.xnb</Output>
+      <Time>2023-06-16T18:25:36.1581282-03:00</Time>
+    </Item>
+    <Item>
+      <Source>green.png</Source>
+      <Name>green</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\green.xnb</Output>
+      <Time>2023-06-16T18:25:36.0956251-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -43,10 +43,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtreeContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtreeContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtreeContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtreeContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
