@@ -18,13 +18,13 @@ namespace CollisionQuadtree
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private const int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720;
+        private const int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720, NUM_ELEMENTS = 50;
 
         BaseElement player;
         List<BaseElement> elements;
         Random random;
         Quadtree quadtree;
-        private float count, interval = 1f;
+        private float count, interval = .1f;
 
         public Game1()
         {
@@ -69,7 +69,7 @@ namespace CollisionQuadtree
             player = new Player(playerTexture, this);
             quadtree.Insert(player);
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < NUM_ELEMENTS; i++)
             {
                 elements.Add(new StaticElement(this, staticElementTexture, redTexture, random));
                 elements.Add(new DinamicElement(this, dinamicElementTexture, redTexture, random));
@@ -105,7 +105,7 @@ namespace CollisionQuadtree
 
             Quadtree playerQuadrant = quadtree.GetQuadrant(player);
             List<BaseElement> elementsInPlayerQuadrant = quadtree.GetElementsInQuadrant(playerQuadrant, player);
-            Window.Title = "Quantidade de Elementos na Regiao onde o Player esta: " + elementsInPlayerQuadrant.Count;
+            Window.Title = "Elementos no Nó do Player: " + elementsInPlayerQuadrant.Count;
 
             player.Collision(elementsInPlayerQuadrant);
 
@@ -148,7 +148,7 @@ namespace CollisionQuadtree
             foreach (BaseElement item in elements)
                 item.Draw(spriteBatch);
 
-            //quadtree.Draw(spriteBatch);
+            quadtree.Draw(spriteBatch);
 
             spriteBatch.End();
 

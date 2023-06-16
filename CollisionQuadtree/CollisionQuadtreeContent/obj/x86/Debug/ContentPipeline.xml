@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\red.xnb</Output>
+      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\red.xnb</Output>
       <Time>2023-06-16T18:25:36.1268761-03:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\blue.xnb</Output>
+      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\blue.xnb</Output>
       <Time>2023-06-16T18:25:36.0644075-03:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\yellow.xnb</Output>
+      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\yellow.xnb</Output>
       <Time>2023-06-16T18:25:36.1581282-03:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\green.xnb</Output>
+      <Output>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\green.xnb</Output>
       <Time>2023-06-16T18:25:36.0956251-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -43,10 +43,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtreeContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtreeContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\ferna\Downloads\CollisionQuadtree-main\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtreeContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtreeContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\ferna\OneDrive\Documents\CollisionQuadtree\CollisionQuadtree\CollisionQuadtree\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

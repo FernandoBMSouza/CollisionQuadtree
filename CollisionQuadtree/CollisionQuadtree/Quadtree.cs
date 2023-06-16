@@ -10,13 +10,14 @@ namespace CollisionQuadtree
 {
     class Quadtree
     {
-        private const int MaxObjectsPerNode = 5;
+        private const int MaxObjectsPerNode = 4;
         private const int MaxLevels = 10;
 
         private int level; //serve para controlar a altura da arvore
         private List<BaseElement> elements;
         private Rectangle bounds; //serve para definir os limites do box da quadtree
         private Quadtree[] nodes; //representa os nos internos da arvore
+        private Texture2D pixel;
 
         public Quadtree(int level, Rectangle bounds)
         {
@@ -174,21 +175,22 @@ namespace CollisionQuadtree
         //Essa funcao serve para desenhar retangulos na tela
         private void DrawRectangle(SpriteBatch spriteBatch, Rectangle rectangle, Color color, int thickness)
         {
-            Texture2D pixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-            pixel.SetData(new[] { Color.White });
+            // Desenhar linhas horizontais
+            spriteBatch.Draw(pixel, new Rectangle(rectangle.Left, rectangle.Top, rectangle.Width, thickness), color); // Linha superior
+            spriteBatch.Draw(pixel, new Rectangle(rectangle.Left, rectangle.Bottom - thickness, rectangle.Width, thickness), color); // Linha inferior
 
-            // Linhas Horizontais
-            spriteBatch.Draw(pixel, new Rectangle(rectangle.Left, rectangle.Top, rectangle.Width, thickness), color);
-            spriteBatch.Draw(pixel, new Rectangle(rectangle.Left, rectangle.Bottom - thickness, rectangle.Width, thickness), color);
-
-            // Linhas Verticais
-            spriteBatch.Draw(pixel, new Rectangle(rectangle.Left, rectangle.Top, thickness, rectangle.Height), color);
-            spriteBatch.Draw(pixel, new Rectangle(rectangle.Right - thickness, rectangle.Top, thickness, rectangle.Height), color);
+            // Desenhar linhas verticais
+            spriteBatch.Draw(pixel, new Rectangle(rectangle.Left, rectangle.Top, thickness, rectangle.Height), color); // Linha esquerda
+            spriteBatch.Draw(pixel, new Rectangle(rectangle.Right - thickness, rectangle.Top, thickness, rectangle.Height), color); // Linha direita
         }
+
 
         // Renderiza a Quadtree na tela
         public void Draw(SpriteBatch spriteBatch)
         {
+            pixel = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+            pixel.SetData(new[] { Color.White });
+
             DrawRectangle(spriteBatch, bounds, Color.Red, 1);
 
             foreach (var node in nodes)
