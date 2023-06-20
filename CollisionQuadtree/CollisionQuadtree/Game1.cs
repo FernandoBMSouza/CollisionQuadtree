@@ -18,7 +18,7 @@ namespace CollisionQuadtree
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private const int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720, NUM_ELEMENTS = 50;
+        public const int SCREEN_WIDTH = 1280, SCREEN_HEIGHT = 720, NUM_ELEMENTS = 50;
 
         BaseElement player;
         List<BaseElement> elements;

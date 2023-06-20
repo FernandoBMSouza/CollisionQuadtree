@@ -153,6 +153,12 @@ namespace CollisionQuadtree
             //}
 
             _position += testDirection * _speed * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+
+            if (_position.X < 0 || _position.X > Game1.SCREEN_WIDTH)
+                testDirection.X *= -1;
+
+            if (_position.Y < 0 || _position.Y > Game1.SCREEN_HEIGHT)
+                testDirection.Y *= -1;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
