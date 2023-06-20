@@ -66,6 +66,8 @@ namespace CollisionQuadtree
             {
                 _position.X += _speed * gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             }
+            
+            
         }
     }
 }

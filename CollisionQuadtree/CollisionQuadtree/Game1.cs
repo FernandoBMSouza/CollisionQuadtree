@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -25,6 +26,9 @@ namespace CollisionQuadtree
         Random random;
         Quadtree quadtree;
         private float count, interval = .1f;
+        float keyCooldown = 0;
+        bool _useQuadtree = true;
+        bool _drawQuadtree = false;
 
         public Game1()
         {
@@ -96,27 +100,63 @@ namespace CollisionQuadtree
         protected override void Update(GameTime gameTime)
         {
             count += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+            //decimal elapsedTime = DateTime.Now.Ticks / (decimal)TimeSpan.TicksPerMillisecond;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            if (Keyboard.GetState().IsKeyDown(Keys.F1) && keyCooldown <= 0)
+            {
+                _drawQuadtree = !_drawQuadtree;
+                keyCooldown = 1f;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.F2) && keyCooldown <= 0)
+            {
+                _useQuadtree = !_useQuadtree;
+                keyCooldown = 1f;
+            }
+
+            if (keyCooldown > 0)
+                keyCooldown -= gameTime.ElapsedGameTime.Milliseconds / 1000f;
+
             // TODO: Add your update logic here
             player.Move(gameTime);
 
-            Quadtree playerQuadrant = quadtree.GetQuadrant(player);
-            List<BaseElement> elementsInPlayerQuadrant = quadtree.GetElementsInQuadrant(playerQuadrant, player);
-            Window.Title = "Elementos no Nó do Player: " + elementsInPlayerQuadrant.Count;
-
-            player.Collision(elementsInPlayerQuadrant);
-
-            foreach (BaseElement item in elements)
+            if (_useQuadtree)
             {
-                if (item is DinamicElement)
-                    item.Move(gameTime);
+                Quadtree playerQuadrant = quadtree.GetQuadrant(player);
+                List<BaseElement> elementsInPlayerQuadrant = quadtree.GetElementsInQuadrant(playerQuadrant, player);
+                Window.Title = "Elementos no Nó do Player: " + elementsInPlayerQuadrant.Count;
 
-                Quadtree itemQuadrant = quadtree.GetQuadrant(item);
-                List<BaseElement> elementsInItemQuadrant = quadtree.GetElementsInQuadrant(itemQuadrant, item);
-                item.Collision(elementsInItemQuadrant);
+                player.Collision(elementsInPlayerQuadrant);
+
+                foreach (BaseElement item in elements)
+                {
+                    if (item is DinamicElement)
+                        item.Move(gameTime);
+
+                    Quadtree itemQuadrant = quadtree.GetQuadrant(item);
+                    List<BaseElement> elementsInItemQuadrant = quadtree.GetElementsInQuadrant(itemQuadrant, item);
+                    item.Collision(elementsInItemQuadrant);
+                }
+
+            } 
+            else
+            {
+                player.Collision(elements);
+
+                foreach (BaseElement item in elements)
+                {
+                    if (item is DinamicElement)
+                        item.Move(gameTime);
+
+                    item.Collision(elements);
+                    item.Collision(player);
+                }
             }
 
             // Reinicia a Quadtree por causa dos elementos que se movem
@@ -129,7 +169,15 @@ namespace CollisionQuadtree
                     quadtree.Insert(element);
             }
 
+
             base.Update(gameTime);
+
+            stopwatch.Stop();
+            Console.WriteLine((stopwatch.ElapsedTicks / (double)TimeSpan.TicksPerMillisecond) + stopwatch.ElapsedMilliseconds + "ms");
+
+            //elapsedTime -= DateTime.Now.Ticks / (decimal)TimeSpan.TicksPerMillisecond;
+            //if (elapsedTime != 0)
+            //Console.WriteLine("Quad = " + _useQuadtree + " " + elapsedTime + "ms");
         }
 
         /// <summary>
@@ -148,7 +196,8 @@ namespace CollisionQuadtree
             foreach (BaseElement item in elements)
                 item.Draw(spriteBatch);
 
-            quadtree.Draw(spriteBatch);
+            if(_drawQuadtree)
+                quadtree.Draw(spriteBatch);
 
             spriteBatch.End();
 
