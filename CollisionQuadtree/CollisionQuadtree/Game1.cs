@@ -130,7 +130,7 @@ namespace CollisionQuadtree
             {
                 Quadtree playerQuadrant = quadtree.GetQuadrant(player);
                 List<BaseElement> elementsInPlayerQuadrant = quadtree.GetElementsInQuadrant(playerQuadrant, player);
-                Window.Title = "Elementos no Nó do Player: " + elementsInPlayerQuadrant.Count;
+                Window.Title = "Quadtree: ON | Elementos no Nó do Player: " + elementsInPlayerQuadrant.Count;
 
                 player.Collision(elementsInPlayerQuadrant);
 
@@ -147,6 +147,8 @@ namespace CollisionQuadtree
             } 
             else
             {
+                Window.Title = "Quadtree: OFF";
+
                 player.Collision(elements);
 
                 foreach (BaseElement item in elements)

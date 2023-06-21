@@ -22,8 +22,7 @@ namespace CollisionQuadtree
         public Point Size { get { return _size; } }
 
         public virtual void Move(GameTime gameTime)
-        { 
-        }
+        { }
 
         public virtual void Collision(BaseElement element)
         { }

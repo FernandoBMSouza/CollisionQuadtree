@@ -10,8 +10,8 @@ namespace CollisionQuadtree
 {
     class Quadtree
     {
-        private const int MaxObjectsPerNode = 4;
-        private const int MaxLevels = 10;
+        private const int MAX_ELEMENTS_NODE = 4;
+        private const int MAX_LEVELS = 10;
 
         private int level; //serve para controlar a altura da arvore
         private List<BaseElement> elements;
@@ -148,7 +148,7 @@ namespace CollisionQuadtree
 
             elements.Add(element);
 
-            if (elements.Count > MaxObjectsPerNode && level < MaxLevels)
+            if (elements.Count > MAX_ELEMENTS_NODE && level < MAX_LEVELS)
             {
                 if (nodes[0] == null)
                     Split();
